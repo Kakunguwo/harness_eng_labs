@@ -106,8 +106,22 @@ Each file contains exercises at the bottom. Run the program once unchanged,
 then complete the exercises and deliberately break the indicated parts. The
 failure modes are an important part of the course.
 
-More detailed guidance is available in [docs/LABS.md](docs/LABS.md). For the
-architecture and terminology, see [docs/CONCEPTS.md](docs/CONCEPTS.md).
+## Engineering notes
+
+The documentation is arranged so learners can move from usage into system
+design without having to infer the architecture from the source code.
+
+| Note | Purpose |
+| --- | --- |
+| [Lab guide](docs/LABS.md) | Run order, exercises, and learning checkpoints |
+| [Concepts and architecture](docs/CONCEPTS.md) | Core terminology and the overall harness model |
+| [Engineering notes](docs/ENGINEERING_NOTES.md) | Components, interfaces, data contracts, failure modes, testing, and production concerns |
+| [Lab 01 notes](docs/LAB_01_BASIC_AGENT.md) | Conversation state and the basic agent loop |
+| [Lab 02 notes](docs/LAB_02_TOOL_HARNESS.md) | Structured tool requests and dispatch flow |
+| [Lab 03 notes](docs/LAB_03_REACT_AGENT.md) | ReAct state machine and bounded execution |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Environment and runtime diagnostics |
+
+The engineering notes contain Mermaid diagrams that render directly on GitHub.
 
 ## Using another local model
 

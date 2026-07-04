@@ -7,22 +7,19 @@ software around that model: prompts, message state, tools, parsers, control
 loops, limits, and error handling. The harness decides what the model can do
 and how model output affects the outside world.
 
-```text
-User input
-    |
-    v
-Message history --> Ollama model --> Model response
-                                      |
-                         direct answer or tool request
-                                      |
-                                      v
-                              Parser and dispatcher
-                                      |
-                                      v
-                                  Python tool
-                                      |
-                                      v
-                     Observation returned to the model
+```mermaid
+flowchart LR
+    U[User input] --> H[Agent harness]
+    M[(Message history)] <--> H
+    H --> O[Ollama chat API]
+    O --> L[Local language model]
+    L --> O
+    O --> H
+    H -->|Direct answer| U
+    H -->|Tool request| P[Parser and dispatcher]
+    P --> T[Allowed Python tool]
+    T --> R[Tool result]
+    R --> H
 ```
 
 ## Message history
@@ -51,8 +48,14 @@ and executing it.
 ReAct combines iterative decision-making with actions and observations. A task
 may need several model calls:
 
-```text
-Decide -> Act -> Observe -> Decide -> Act -> Observe -> Answer
+```mermaid
+flowchart LR
+    D1[Decide] --> A1[Act]
+    A1 --> O1[Observe]
+    O1 --> D2[Decide again]
+    D2 --> A2[Act]
+    A2 --> O2[Observe]
+    O2 --> F[Final answer]
 ```
 
 A robust loop needs a step limit, strict parsing, explicit tool permissions,
