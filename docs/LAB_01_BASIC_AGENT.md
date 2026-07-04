@@ -23,29 +23,29 @@ Source: [`lab_01_basic_agent.py`](../lab_01_basic_agent.py)
 sequenceDiagram
     autonumber
     actor User
-    participant Loop as run loop
+    participant Controller as CLI controller
     participant History as messages list
     participant Chat as chat function
     participant Ollama as Ollama API
 
-    Loop->>History: Insert system message
-    User->>Loop: First question
-    Loop->>History: Append user message
-    Loop->>Chat: chat messages
+    Controller->>History: Insert system message
+    User->>Controller: First question
+    Controller->>History: Append user message
+    Controller->>Chat: chat messages
     Chat->>Ollama: POST /api/chat
     Ollama-->>Chat: Assistant response
-    Chat-->>Loop: Reply text
-    Loop->>History: Append assistant message
-    Loop-->>User: Display reply
+    Chat-->>Controller: Reply text
+    Controller->>History: Append assistant message
+    Controller-->>User: Display reply
 
-    User->>Loop: Follow-up question
-    Loop->>History: Append user message
+    User->>Controller: Follow-up question
+    Controller->>History: Append user message
     Note over History,Ollama: Full history is sent again
-    Loop->>Chat: chat messages
+    Controller->>Chat: chat messages
     Chat->>Ollama: POST /api/chat
-    Ollama-->>Loop: Context-aware reply
-    Loop->>History: Append assistant message
-    Loop-->>User: Display reply
+    Ollama-->>Controller: Context-aware reply
+    Controller->>History: Append assistant message
+    Controller-->>User: Display reply
 ```
 
 ## Message growth
