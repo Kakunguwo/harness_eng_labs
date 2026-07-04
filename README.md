@@ -181,5 +181,4 @@ Corrections and additional educational exercises are welcome. Read
 
 ## License
 
-No license has been selected yet. Until the repository owner adds one, normal
-copyright restrictions apply.
+This project is available under the [MIT License](LICENSE).
